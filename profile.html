@@ -1,0 +1,80 @@
+<html>
+<head>
+	<title>Profile</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+	<link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css"/>
+	<script src="http://semantic-ui.com/dist/semantic.min.js"></script>
+	<script src="http://patrickgawron.com/wp/wp-content/uploads/2013/11/jquery.address.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="HandheldFriendly" content="true" />
+	<meta charset="UTF-8">
+	  <style type="text/css">
+	  #card{
+	  	margin-top: 30px;
+	  	width: 30%;
+
+	  }
+	  .ui.menu{
+		height:40px;
+	  }
+	  body{
+	  	margin:10px 40px 0 40px;
+	  }
+	  #name{
+	  	font-size:30pt;
+	  }
+	  #detail{
+	  	color: blue;
+	  	font-style: bold;
+	  	font-size: 15pt;
+	  }
+
+
+	  </style>
+	 
+</head>
+
+
+	<body>	
+<div class="ui center aligned container">
+<a href='/' class="ui small image"><img src="/logo.png" ></a></div>
+<div class="ui inverted red stackable container menu">
+  <a class="item" >Home</a>
+  <a class="active item" href="/new">New Member</a>
+  <a class="item" href="/search">Update/Search Member</a>
+  <a class="item" href="/allmembers">View All member</a>
+  <div class="right item">
+    | Welcome! <%= user.exec.username %> |    
+    <a class="ui inverted button" href="/logout">Log out</a>
+    
+  </div>
+</div>
+</div>	
+		<div id="card" class="ui centered card">
+
+		  <div class="content">
+		    <div class="ui red inverted center aligned segment" id='name'><%= member.member.name %></div>
+		             <% if (member.member.name) { %>
+    <div class="ui blue center aligned stackable segment" id="detail">
+    	<p class="ui red header">Email: </p><%= member.member.email %>
+    	<p class="ui red header">Phone number: </p><%= member.member.number %>
+    	<p class="ui red header">14-15 memebrship number: </p><%= member.member.card14_15 %>
+    	<p class="ui red header">15-16 memebrship number: </p><%= member.member.card15_16 %>
+    	<p class="ui red header">16-17 memebrship number: </p><%= member.member.card16_17 %>
+    	<p class="ui red header">Academic year: </p><%= member.member.year %>
+    	<p class="ui red header">Program: </p><%= member.member.program %>
+    	<p class="ui red header">Student number: </p><%= member.member.stdnum %>
+    </div>
+  <% } %>
+		        <a class="ui green bottom attached button" href="/members/<%= member.member.ID %>/edit">
+		       
+			      <i class="add icon"></i>
+			      EDIT
+			    </a>
+
+			    <p id='chris'></p>
+		  </div>
+		</div>
+	</body>
+
+</html>	

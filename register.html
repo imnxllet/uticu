@@ -1,0 +1,164 @@
+<!DOCTYPE>
+<html>
+<head>
+<title>FastLine</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css"/>
+<script src="http://semantic-ui.com/dist/semantic.min.js"></script>
+<script src="http://patrickgawron.com/wp/wp-content/uploads/2013/11/jquery.address.js"></script>  
+<style type="text/css">
+    body {
+      background-color: white;
+    }
+    body > .grid {
+    }
+    .image {
+
+    }
+    .column {
+      max-width: 400px;
+
+
+    }
+
+    }
+
+  </style>
+    <script>
+  $(document)
+    .ready(function() {
+      $('.ui.form')
+        .form({
+          fields: {
+            username: {
+              identifier  : 'username',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your e-mail'
+                },
+                {
+                  type   : 'email',
+                  prompt : 'Please enter a valid e-mail'
+                }
+              ]
+            },
+            password: {
+              identifier  : 'password',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your password'
+                },
+                {
+                  type   : 'length[6]',
+                  prompt : 'Your password must be at least 6 characters'
+                }
+              ]
+            }
+          }
+        })
+      ;
+    })
+  ;
+  </script>
+</head>
+ 
+<body>
+<br/>
+<div class="ui center aligned container">
+<a href='/' class="ui small image"><img src="logo.png" ></a></div>
+<div class="ui inverted red stackable container menu">
+  <a class="item" >Home</a>
+  <a class="active item" href="/new">New Member</a>
+  <a class="item" href="/search">Uodate/Search Member</a>
+  <a class="item" href="/allmembers">View All member</a>
+  <div class="right item">
+    | Welcome! <%= user.exec.username %> |    
+    <a class="ui inverted button" href="/logout">Log out</a>
+    
+  </div>
+</div>
+<div class="ui middle aligned center aligned grid" id="">
+  <div class="column">
+
+      <div class="ui large header">
+        Add New Member
+      </div>
+
+
+  <div class="ui segment">
+
+		<form class="ui form" action='/signup' method='POST'>
+    <div class="field">
+        <label>Name*</label>
+        <input type="text" name="name" required/>
+      </div>
+        
+          <div class="field">
+        <label>Email*</label>
+        <input type="text" name="email" required/>
+      </div>
+    <div class="field">
+        <label>Phone Number*</label>
+        <input type="text" name="number" required/>
+      </div>
+
+    <div class="field">
+      <label>16-17 Membership Number*</label>
+      <input type="text" name="card" required/>
+    </div>
+<div class="field">
+        <label>Academic Year</label>
+         <select class="ui fluid dropdown" name="year">
+                  <option value="1">Year 1</option>
+              <option value="2">Year 2</option>
+              <option value="3">Year 3</option>
+              <option value="4">Year 4</option>
+              <option value="grad">Graduate</option>
+             
+
+                </select>
+      </div>
+ <div class="field"><label>Program</label>
+                      <select class="ui fluid dropdown" name="program">
+                  <option value="Rotman">Rotman</option>
+              <option value="Architecture">Architecture</option>
+              <option value="Math">Math/Physical science</option>
+              <option value="comsci">Computer Science</option>
+              <option value="lifesci">Life Science</option>
+              <option value="engineering">Engineering</option>
+              <option value="arts">Arts</option>
+              <option value="Other">Others</option>
+
+                </select>
+      </div>
+
+       <div class="field">
+        <label>Student Number</label>
+        <input type="text" name="stdnum"/>
+      </div>
+      
+      <p>* means mandatory field.</p>
+      <div class="ui error message"></div>
+        <!-- show any messages that come back with authentication -->
+  <% if (message1.length > 0) { %>
+    <div class="ui red message"> <%= message1 %> </div>
+  <% } %>
+ <% if (message.length > 0) { %>
+    <div class="ui green message"> <%= message %> </div>
+  <% } %>
+		  <input class="ui blue button" type="submit" value='Sign up!'></input>
+	
+		</form>
+	</div>	
+</div>
+</div>
+
+
+		
+
+
+
+</body>
+</html>

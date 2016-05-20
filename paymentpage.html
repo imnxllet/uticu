@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+
+
+  <!-- Site Properties -->
+  <title>Food Truck</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css"/>
+<script src="http://semantic-ui.com/dist/semantic.min.js"></script>
+<script src="http://patrickgawron.com/wp/wp-content/uploads/2013/11/jquery.address.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+  $('.ui.star.rating').rating();
+  $('.top.menu .item').tab();
+  $('.demo.menu .item').tab();
+  $('#pay1').click(function(){
+    alert("Order has been received! Wait 5 Min!");
+    window.location.href = "./index.html";
+  });
+    $('#pay2').click(function(){
+    alert("Order has been received! Wait 5 Min!");
+    window.location.href = "./index.html";
+  });
+  }
+);
+</script>
+  <link rel="stylesheet" href="css/stylepayment.css">
+<style media="screen" type="text/css">
+
+.quantity{
+ width: 60px;
+}
+.ui.menu{
+  height:40px;
+}
+
+.ui.segment{
+  max-width: 800px;
+}
+</style>
+</head>
+
+
+<body style="margin:10px 40px 0 40px;">
+<div id="menu" class="ui red menu">
+  <div class="ui container">
+    <a class="active item" href="/home">Home</a>
+    <a class="item" href="/profile">Profile</a>
+    <a class="item" href="/trucklist">Order now!</a>
+            <div class="item">
+          <form class="ui action input" action='/search' method="POST">
+            <input type="text" name='keyword' placeholder="Search food or type">
+            <input class="ui teal button" type='submit' value='Search'></input>
+          </form>
+        </div>
+    <div class="right menu">
+    <div class="item">
+        Welcome! <%= user.username %>
+      </div>
+      <div class="item">
+        <a class="ui primary button" href="/logout">Log out</a>
+      </div>
+    </div>
+  </div>
+</div>  
+
+
+
+<div class="ui grid">
+  <div class="two column row">
+    
+
+</div>
+
+
+
+
+
+
+</div>
+
+
+
+
+
+
+</body>
+
+</html>

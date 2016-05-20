@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>
+        Edit profile
+    </title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="HandheldFriendly" content="true" />
+    <meta charset="UTF-8">
+    <style type="text/css">
+      .ui.menu{
+        height:40px;
+      }
+      body{
+        margin:10px 40px 0 40px;
+      }
+      .ui.input{
+        max-width:200px;
+      }
+
+      </style>
+
+</head>
+<body>
+<div id="menu" class="ui red menu">
+  <div class="ui container">
+    <a class="active item" href="/home">Home</a>
+    <a class="item" href="/profile">Profile</a>
+    <a class="item" href="/trucklist">Order now!</a>
+            <div class="item">
+          <form class="ui action input" action='/search' method="POST">
+            <input type="text" name='keyword' placeholder="Search food or type">
+            <input class="ui teal button" type='submit' value='Search'></input>
+          </form>
+        </div>
+    <div class="right menu">
+    <div class="item">
+        Welcome! <%= user.username %>
+      </div>
+      <div class="item">
+        <a class="ui primary button" href="/logout">Log out</a>
+      </div>
+    </div>
+  </div>
+</div>  
+ 
+
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h1>Edit your Profile</h1>
+    <div class = 'ui orange big label'><%= user.username %></div>
+     <br/><br/>
+    <form class="ui large form" action='/update-customer' method='POST'>
+
+      <div class="ui stacked segment">
+        <div class="field">Change passwords: 
+          <div class="ui left icon input">
+            <input type="text" name="password">
+          </div>
+    
+          <input class="ui teal submit button" type='submit' value='Update'>
+           <% if (message.length > 0) { %>
+    <div class="ui green message"><%= message %></div>
+  <% } %>
+          </div>
+      </div>
+    </form>
+  </div>
+</div>    
+
+    
+
+
+</div>
+</body>
+</html>
