@@ -89,7 +89,7 @@ router.get('/home', isLoggedIn, function(req, res){
 	}else{
 		res.render('seller-home.html', { user: req.user });
 	}*/
-	res.render('view/index.html', { user: req.user });
+	res.render('index.html', { user: req.user });
 });
  //res.send('Username '+ username+ ' password '+ password);
 
@@ -101,7 +101,7 @@ router.get('/search', isLoggedIn, function(req, res){
 	}else{
 		res.render('seller-home.html', { user: req.user });
 	}*/
-	res.render('view/search.html', { user: req.user });
+	res.render('search.html', { user: req.user });
 });
 /*logout request*/
 router.get('/logout', function(req, res){
@@ -111,7 +111,7 @@ router.get('/logout', function(req, res){
 
 /*Profile page*/
 router.get('/new', isLoggedIn, function(req, res){
-		res.render('view/register.html',{user: req.user, message: req.flash('signupMessage'),message1: req.flash('signupMessage1')});
+		res.render('register.html',{user: req.user, message: req.flash('signupMessage'),message1: req.flash('signupMessage1')});
 	});
 
 router.get('/show/:year', isLoggedIn, function(req, res){
@@ -125,7 +125,7 @@ router.get('/show/:year', isLoggedIn, function(req, res){
 	      }
 		      //console.log(trucks);
 		      //console.log(req.params.id);
-		      res.render('view/allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members), year: year});
+		      res.render('allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members), year: year});
 		   });
 		
 	}else if(year == 1516){
@@ -137,7 +137,7 @@ router.get('/show/:year', isLoggedIn, function(req, res){
 	      }
 		      //console.log(trucks);
 		      //console.log(req.params.id);
-		      res.render('view/allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members),year: year});
+		      res.render('allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members),year: year});
 		   });
 		
 
@@ -150,7 +150,7 @@ router.get('/show/:year', isLoggedIn, function(req, res){
 	      }
 		      //console.log(trucks);
 		      //console.log(req.params.id);
-		      res.render('view/allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members),year: year});
+		      res.render('allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members),year: year});
 		   });
 		
 
@@ -167,7 +167,7 @@ router.post('/searchname', isLoggedIn, function(req, res){
 	      }
 		      //console.log(trucks);
 		      //console.log(req.params.id);
-		      res.render('view/allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members), year: "Resulting"});
+		      res.render('allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members), year: "Resulting"});
 		   });
 });
 
@@ -181,7 +181,7 @@ router.post('/searchyear', isLoggedIn, function(req, res){
 	      }
 		      //console.log(trucks);
 		      //console.log(req.params.id);
-		      res.render('view/allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members), year: "Resulting"});
+		      res.render('allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members), year: "Resulting"});
 		   });
 });
 
@@ -195,7 +195,7 @@ router.post('/searchprogram', isLoggedIn, function(req, res){
 	      }
 		      //console.log(trucks);
 		      //console.log(req.params.id);
-		      res.render('view/allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members), year: "Resulting"});
+		      res.render('allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members), year: "Resulting"});
 		   });
 });
 /*get edit page*/
@@ -216,7 +216,7 @@ router.get('/members/:id/edit', isLoggedIn, function(req, res){
 
     // If found, we return the info.
     //console.log(truck); 
-    res.render('view/update.html', { user: req.user, member:member, Message: req.flash('Message')});
+    res.render('update.html', { user: req.user, member:member, Message: req.flash('Message')});
   });
 
 
@@ -279,7 +279,7 @@ router.get('/allmembers', isLoggedIn, function(req, res){
       }
       //console.log(trucks);
       //console.log(req.params.id);
-      res.render('view/allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members), year: "All"});
+      res.render('allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members), year: "All"});
    });
 		
 });
@@ -302,7 +302,7 @@ router.get('/members/:id', isLoggedIn, function(req, res){
 
     // If found, we return the info.
     //console.log(truck); 
-    res.render('view/profile.html', { user: req.user, member:member, message: req.flash('Message')});
+    res.render('profile.html', { user: req.user, member:member, message: req.flash('Message')});
   });
 });
 
@@ -317,7 +317,7 @@ function isLoggedIn(req, res, next) {
 	}
     console.log('is not logged in!');
 
-	res.render('view/login.html', { message: req.flash('loginMessage')});
+	res.render('login.html', { message: req.flash('loginMessage')});
 }
 
 function turnTruckstoHtmlList(trucklist){

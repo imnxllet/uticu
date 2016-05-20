@@ -3,15 +3,24 @@ var app = express();
 //var expressValidator = require('express-validator')
 var login = require('./routes/login.js');
 // set views path, template engine and default layout
-app.engine('.html', require('ejs').__express);
-app.set('views', __dirname);
-app.set('view engine', 'html');
+
 var passport = require('passport');
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var session = require('express-session');
 var flash = require('connect-flash');
+var express = require('express');
+var favicon = require('serve-favicon');
+
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
+
+app.use(express.static(__dirname + '/public'));
+app.set('views', __dirname + '/view');
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+
+
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
   extended: true
