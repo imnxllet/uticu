@@ -27,6 +27,8 @@ app.use(passport.session()); // persistent login sessions
 app.use(flash());
 //serve static file.
 app.use(express.static('public/images'));
+app.use(express.static('public'));
+app.use('/favicon.ico', express.static('images/favicon.ico'));
 /*var bodyParser = require('body-parser')
 app.use( bodyParser.json() );       // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({     // to support URL-encoded bodies

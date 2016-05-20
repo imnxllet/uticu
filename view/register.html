@@ -1,77 +1,37 @@
-<!DOCTYPE>
 <html>
 <head>
-<title>FastLine</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css"/>
-<script src="http://semantic-ui.com/dist/semantic.min.js"></script>
-<script src="http://patrickgawron.com/wp/wp-content/uploads/2013/11/jquery.address.js"></script>  
-<style type="text/css">
-    body {
-      background-color: white;
-    }
-    body > .grid {
-    }
-    .image {
+  <title>Add ner member</title>
+  <script src="js/jquery.js"></script>
+<link rel="stylesheet" href="/stylesheets/semantic.min.css"/>
+<script src="js/semantic.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="HandheldFriendly" content="true" />
+  <meta charset="UTF-8">
+    <style type="text/css">
 
-    }
-    .column {
-      max-width: 400px;
-
-
+    body{
+      margin:10px 40px 0 40px;
     }
 
+    #form{
+      width:30%;
+      padding-bottom: 20px;
     }
 
-  </style>
-    <script>
-  $(document)
-    .ready(function() {
-      $('.ui.form')
-        .form({
-          fields: {
-            username: {
-              identifier  : 'username',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your e-mail'
-                },
-                {
-                  type   : 'email',
-                  prompt : 'Please enter a valid e-mail'
-                }
-              ]
-            },
-            password: {
-              identifier  : 'password',
-              rules: [
-                {
-                  type   : 'empty',
-                  prompt : 'Please enter your password'
-                },
-                {
-                  type   : 'length[6]',
-                  prompt : 'Your password must be at least 6 characters'
-                }
-              ]
-            }
-          }
-        })
-      ;
-    })
-  ;
-  </script>
-</head>
+@media (max-width: 600px) {
  
-<body>
-<br/>
+}
+
+    </style>
+   
+</head>
+  <body>  
 <div class="ui center aligned container">
-<a href='/' class="ui small image"><img src="logo.png" ></a></div>
+<a href='/' class="ui small image"><img src="/logo.png" ></a></div>
 <div class="ui inverted red stackable container menu">
   <a class="item" >Home</a>
   <a class="active item" href="/new">New Member</a>
-  <a class="item" href="/search">Uodate/Search Member</a>
+  <a class="item" href="/search">Update/Search Member</a>
   <a class="item" href="/allmembers">View All member</a>
   <div class="right item">
     | Welcome! <%= user.exec.username %> |    
@@ -79,19 +39,18 @@
     
   </div>
 </div>
-<div class="ui middle aligned center aligned grid" id="">
-  <div class="column">
-
-      <div class="ui large header">
+</div>
+<div class="ui center aligned large header">
         Add New Member
       </div>
 
 
-  <div class="ui segment">
+  <div class="ui center aligned container" id="form">
+  <div class="ui blue segment">
 
-		<form class="ui form" action='/signup' method='POST'>
+    <form class="ui form" action='/signup' method='POST'>
     <div class="field">
-        <label>Name*</label>
+        <label>Name* (Please capitalize first letter of last and first name.)</label>
         <input type="text" name="name" required/>
       </div>
         
@@ -125,10 +84,10 @@
                   <option value="Rotman">Rotman</option>
               <option value="Architecture">Architecture</option>
               <option value="Math">Math/Physical science</option>
-              <option value="comsci">Computer Science</option>
-              <option value="lifesci">Life Science</option>
-              <option value="engineering">Engineering</option>
-              <option value="arts">Arts</option>
+              <option value="CS">Computer Science</option>
+              <option value="Lifesci">Life Science</option>
+              <option value="Engineering">Engineering</option>
+              <option value="Arts">Arts</option>
               <option value="Other">Others</option>
 
                 </select>
@@ -148,17 +107,19 @@
  <% if (message.length > 0) { %>
     <div class="ui green message"> <%= message %> </div>
   <% } %>
-		  <input class="ui blue button" type="submit" value='Sign up!'></input>
-	
-		</form>
-	</div>	
+      <input class="ui blue button" type="submit" value='Sign up!'></input>
+  
+    </form>
+  </div>  
 </div>
-</div>
 
 
-		
+  </body>
+
+</html> 
 
 
 
-</body>
-</html>
+
+
+

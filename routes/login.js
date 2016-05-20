@@ -14,26 +14,6 @@ router.get('/', isLoggedIn, function(req, res){
   res.redirect('/home');
 });
 
-/*clear database*/
-router.get('/clear', isLoggedIn, function(req, res){
-  User.remove({}, function(err) { 
-    console.log('collection removed') 
-   });
-  var admin = new User();
-          admin.username = 'admin@fastline.com';
-          admin.password = admin.generateHash('adminfastline');
-          //admin.truck.name = 'mi';
-
-
-          admin.save(function (err) {
-              if (err) {
-                console.log(err);
-                return;
-              }});
-
-          console.log('Admin save!');
-  res.render('admin.html', { user: admin ,message:"Database Cleared!"});
-});
 
 
 /*Login Button request*/
@@ -109,7 +89,7 @@ router.get('/home', isLoggedIn, function(req, res){
 	}else{
 		res.render('seller-home.html', { user: req.user });
 	}*/
-	res.render('index.html', { user: req.user });
+	res.render('view/index.html', { user: req.user });
 });
  //res.send('Username '+ username+ ' password '+ password);
 
@@ -121,7 +101,7 @@ router.get('/search', isLoggedIn, function(req, res){
 	}else{
 		res.render('seller-home.html', { user: req.user });
 	}*/
-	res.render('search.html', { user: req.user });
+	res.render('view/search.html', { user: req.user });
 });
 /*logout request*/
 router.get('/logout', function(req, res){
@@ -131,7 +111,7 @@ router.get('/logout', function(req, res){
 
 /*Profile page*/
 router.get('/new', isLoggedIn, function(req, res){
-		res.render('register.html',{user: req.user, message: req.flash('signupMessage'),message1: req.flash('signupMessage1')});
+		res.render('view/register.html',{user: req.user, message: req.flash('signupMessage'),message1: req.flash('signupMessage1')});
 	});
 
 router.get('/show/:year', isLoggedIn, function(req, res){
@@ -145,7 +125,7 @@ router.get('/show/:year', isLoggedIn, function(req, res){
 	      }
 		      //console.log(trucks);
 		      //console.log(req.params.id);
-		      res.render('allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members), year: year});
+		      res.render('view/allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members), year: year});
 		   });
 		
 	}else if(year == 1516){
@@ -157,7 +137,7 @@ router.get('/show/:year', isLoggedIn, function(req, res){
 	      }
 		      //console.log(trucks);
 		      //console.log(req.params.id);
-		      res.render('allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members),year: year});
+		      res.render('view/allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members),year: year});
 		   });
 		
 
@@ -170,13 +150,54 @@ router.get('/show/:year', isLoggedIn, function(req, res){
 	      }
 		      //console.log(trucks);
 		      //console.log(req.params.id);
-		      res.render('allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members),year: year});
+		      res.render('view/allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members),year: year});
 		   });
 		
 
 	}
 	});
 
+router.post('/searchname', isLoggedIn, function(req, res){
+	var name = capitalizeFirstLetter(req.body.name);
+		User.find({'member.name': { "$regex": name}},function(err, members) {
+	      if (err) {
+	        res.status(500).send(err);
+	        console.log(err);
+	        return;
+	      }
+		      //console.log(trucks);
+		      //console.log(req.params.id);
+		      res.render('view/allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members), year: "Resulting"});
+		   });
+});
+
+router.post('/searchyear', isLoggedIn, function(req, res){
+	var year = req.body.year;
+		User.find({'member.year': { "$regex": year}},function(err, members) {
+	      if (err) {
+	        res.status(500).send(err);
+	        console.log(err);
+	        return;
+	      }
+		      //console.log(trucks);
+		      //console.log(req.params.id);
+		      res.render('view/allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members), year: "Resulting"});
+		   });
+});
+
+router.post('/searchprogram', isLoggedIn, function(req, res){
+	var program = capitalizeFirstLetter(req.body.program);
+		User.find({'member.program': { "$regex": program}},function(err, members) {
+	      if (err) {
+	        res.status(500).send(err);
+	        console.log(err);
+	        return;
+	      }
+		      //console.log(trucks);
+		      //console.log(req.params.id);
+		      res.render('view/allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members), year: "Resulting"});
+		   });
+});
 /*get edit page*/
 router.get('/members/:id/edit', isLoggedIn, function(req, res){
 	var id= req.params.id;
@@ -195,7 +216,7 @@ router.get('/members/:id/edit', isLoggedIn, function(req, res){
 
     // If found, we return the info.
     //console.log(truck); 
-    res.render('update.html', { user: req.user, member:member, Message: req.flash('Message')});
+    res.render('view/update.html', { user: req.user, member:member, Message: req.flash('Message')});
   });
 
 
@@ -258,7 +279,7 @@ router.get('/allmembers', isLoggedIn, function(req, res){
       }
       //console.log(trucks);
       //console.log(req.params.id);
-      res.render('allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members), year: "All"});
+      res.render('view/allmembers.html', { user: req.user, members: turnTruckstoHtmlList(members), year: "All"});
    });
 		
 });
@@ -281,7 +302,7 @@ router.get('/members/:id', isLoggedIn, function(req, res){
 
     // If found, we return the info.
     //console.log(truck); 
-    res.render('profile.html', { user: req.user, member:member, message: req.flash('Message')});
+    res.render('view/profile.html', { user: req.user, member:member, message: req.flash('Message')});
   });
 });
 
@@ -296,7 +317,7 @@ function isLoggedIn(req, res, next) {
 	}
     console.log('is not logged in!');
 
-	res.render('login.html', { message: req.flash('loginMessage')});
+	res.render('view/login.html', { message: req.flash('loginMessage')});
 }
 
 function turnTruckstoHtmlList(trucklist){
@@ -325,6 +346,20 @@ Array.prototype.unique = function() {
 
     return a;
 };
+function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
 
+Array.prototype.unique = function() {
+    var a = this.concat();
+    for(var i=0; i<a.length; ++i) {
+        for(var j=i+1; j<a.length; ++j) {
+            if(a[i] === a[j])
+                a.splice(j--, 1);
+        }
+    }
+
+    return a;
+};
 module.exports = router;
 

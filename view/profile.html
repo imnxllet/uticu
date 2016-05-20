@@ -1,34 +1,49 @@
 <html>
 <head>
-	<title>Profile</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css"/>
-	<script src="http://semantic-ui.com/dist/semantic.min.js"></script>
-	<script src="http://patrickgawron.com/wp/wp-content/uploads/2013/11/jquery.address.js"></script>
+	<title><%= member.member.name %> profile</title>
+  <script src="js/jquery.js"></script>
+<link rel="stylesheet" href="/stylesheets/semantic.min.css"/>
+<script src="js/semantic.min.js"></script>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="HandheldFriendly" content="true" />
 	<meta charset="UTF-8">
 	  <style type="text/css">
 	  #card{
 	  	margin-top: 30px;
-	  	width: 30%;
+	  	width: 40%;
+	
 
 	  }
-	  .ui.menu{
-		height:40px;
-	  }
+
 	  body{
 	  	margin:10px 40px 0 40px;
 	  }
 	  #name{
-	  	font-size:30pt;
+	  	font-size:25pt;
 	  }
 	  #detail{
 	  	color: blue;
 	  	font-style: bold;
 	  	font-size: 15pt;
 	  }
+@media (max-width: 600px) {
+	#card{
+	  	margin-top: 30px;
+	  	width: 300px;
 
+	  }
+	   body{
+	  	margin:10px 40px 0 40px;
+	  }
+	  #name{
+	  	font-size: 20pt;
+	  }
+	  #detail{
+	  	color: blue;
+	  	font-style: bold;
+	  	font-size: 12pt;
+	  }
+}
 
 	  </style>
 	 
@@ -40,7 +55,7 @@
 <a href='/' class="ui small image"><img src="/logo.png" ></a></div>
 <div class="ui inverted red stackable container menu">
   <a class="item" >Home</a>
-  <a class="active item" href="/new">New Member</a>
+  <a class="item" href="/new">New Member</a>
   <a class="item" href="/search">Update/Search Member</a>
   <a class="item" href="/allmembers">View All member</a>
   <div class="right item">
@@ -49,10 +64,12 @@
     
   </div>
 </div>
-</div>	
+</div>
+
+<div class="ui container">	
 		<div id="card" class="ui centered card">
 
-		  <div class="content">
+		  <div class="text container">
 		    <div class="ui red inverted center aligned segment" id='name'><%= member.member.name %></div>
 		             <% if (member.member.name) { %>
     <div class="ui blue center aligned stackable segment" id="detail">
@@ -75,6 +92,9 @@
 			    <p id='chris'></p>
 		  </div>
 		</div>
+
+
+</div>
 	</body>
 
 </html>	

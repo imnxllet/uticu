@@ -8,19 +8,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <!-- Site Properties -->
-  <title>Pick a truck</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<link rel="stylesheet" href="http://semantic-ui.com/dist/semantic.min.css"/>
-<script src="http://semantic-ui.com/dist/semantic.min.js"></script>
+  <title>Members List</title>
+  <script src="js/jquery.js"></script>
+<link rel="stylesheet" href="/stylesheets/semantic.min.css"/>
+<script src="js/semantic.min.js"></script>
 <!--<script src="http://patrickgawron.com/wp/wp-content/uploads/2013/11/jquery.address.js"></script> !-->
 <style type="text/css">
     #card{
       margin-top: 100px;
 
     }
-    .ui.menu{
-    height:40px;
-    }
+
     body{
       margin:10px 40px 0 40px;
     }
@@ -40,9 +38,9 @@
 <div class="ui center aligned container">
 <a href='/' class="ui small image"><img src="logo.png" ></a></div>
 <div class="ui inverted red stackable container menu">
-  <a class="item" >Home</a>
+  <a class="item" href="/home">Home</a>
   <a class="item" href="/new">New Member</a>
-  <a class="item" href="/search">Uodate/Search Member</a>
+  <a class="item" href="/search">Update/Search Member</a>
   <a class="active item" href="/allmembers">View All member</a>
   <div class="right item">
     | Welcome! <%= user.exec.username %> |    
