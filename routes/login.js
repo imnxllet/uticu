@@ -3,7 +3,7 @@ var router = express.Router();
 var User = require('./user.js');
 var passport = require('passport');
 var session = require('express-session');
-require('../config/passport.js')(passport)
+//require('../config/passport.js')(passport)
 
 router.use(session({secret: 'anystringoftext',
 				 saveUninitialized: true,
