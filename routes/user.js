@@ -3,11 +3,11 @@ var Schema = mongoose.Schema;
 old_member = require("../icumembership.json");
 //var bcrypt = require('bcrypt');
 
-mongoose.connect('mongodb://uticu2014:uticu2014@ds025180.mlab.com:25180/uticu');
-/*mongoose.connect('localhost:27017/uticu', {
+//mongoose.connect('mongodb://uticu2014:uticu2014@ds025180.mlab.com:25180/uticu');
+mongoose.connect('localhost:27017/uticu', {
   user: '',
   pass: ''
-});*/
+});
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {

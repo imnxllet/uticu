@@ -44,6 +44,13 @@
         Add New Member
       </div>
 
+        <!-- show any messages that come back with authentication -->
+  <% if (message1.length > 0) { %>
+    <div class="ui red message"> <%= message1 %> </div>
+  <% } %>
+ <% if (message.length > 0) { %>
+    <div class="ui green message"> <%= message %> </div>
+  <% } %>
 
   <div class="ui center aligned container" id="form">
   <div class="ui blue segment">
@@ -99,14 +106,7 @@
       </div>
       
       <p>* means mandatory field.</p>
-      <div class="ui error message"></div>
-        <!-- show any messages that come back with authentication -->
-  <% if (message1.length > 0) { %>
-    <div class="ui red message"> <%= message1 %> </div>
-  <% } %>
- <% if (message.length > 0) { %>
-    <div class="ui green message"> <%= message %> </div>
-  <% } %>
+      
       <input class="ui blue button" type="submit" value='Sign up!'></input>
   
     </form>

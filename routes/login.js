@@ -319,14 +319,27 @@ function isLoggedIn(req, res, next) {
 
 	res.render('login.html', { message: req.flash('loginMessage')});
 }
+function compare(x, y) {
+	nameA = x.member.name;
+	nameB = y.member.name;
+
+ if (nameA < nameB) //sort string ascending
+  return -1;
+ if (nameA > nameB)
+  return 1;
+ return 0; //default return value (no sorting)
+
+}
+
 
 function turnTruckstoHtmlList(trucklist){
+
     //console.log(trucklist.length);
     var result = [];
     for(i=0;i<trucklist.length;i++){
        result.push(trucklist[i]);
     }
-    return result;
+    return result.sort(compare);
   }
 
 /*capitalize the first letter of string (from stackoverflow
