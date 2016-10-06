@@ -68,8 +68,8 @@ var User = mongoose.model('User', userSchema);
       }
       if(!user){
         var admin = new User();
-          admin.exec.username = 'uticu2014@gmail.com';
-          admin.exec.password = 'uticu2014';
+          admin.exec.username = 'uticu';
+          admin.exec.password = 'uticu';
           //admin.truck.name = 'mi';
 
 
