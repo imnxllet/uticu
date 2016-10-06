@@ -109,16 +109,14 @@ No members yet!
       font-size: 12pt;
     }
     #body,#table{
-      width:70%;
+      
       margin: 0 auto;
     }
     .name{
       font-size: 12.8pt;
       font-weight: bold;
     }
-    .edit{
-      color: black;
-    }
+ 
 
     </style>
  <script type="text/javascript">
@@ -181,7 +179,7 @@ No members yet!
       <a href="/members/<%= members[i].member.ID %>" class="name">
         <%= members[i].member.name %></a>
         
-  <a href="/members/<%= members[i].member.ID %>"><div class="ui tiny yellow label">Edit</div></a>
+  <a href="/members/<%= members[i].member.ID %>"><div class="ui mini yellow label">Edit</div></a>
 
       </td>
       <td class="center aligned">
