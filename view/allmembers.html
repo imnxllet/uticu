@@ -61,13 +61,18 @@
 No members yet!
 </div>
  <% } %>
-    <div id='list' class="ui horizontal list">
+    
+
+  <div id='list' class="ui ordered horizontal list">
+
 
 <% for(var i=0; i<members.length; i++) {%>
+
+<div class="item">
 <a class="ui red basic label" href="/members/<%= members[i].member.ID %>">
-<img class="ui avatar image" src="http://semantic-ui.com/images/avatar/small/christian.jpg">
+<i class="user icon"></i>
     <%= members[i].member.name %>
-  </a>  
+  </a>  </div>
 
 <% } %>
 

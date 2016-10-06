@@ -3,11 +3,11 @@ var Schema = mongoose.Schema;
 old_member = require("../icumembership.json");
 //var bcrypt = require('bcrypt');
 
-//mongoose.connect('mongodb://uticu2014:uticu2014@ds025180.mlab.com:25180/uticu');
-mongoose.connect('localhost:27017/uticu_test', {
+mongoose.connect('mongodb://uticu2014:uticu2014@ds025180.mlab.com:25180/uticu');
+/*mongoose.connect('localhost:27017/uticu_test4', {
   user: '',
   pass: ''
-});
+});*/
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
@@ -106,7 +106,7 @@ var User = mongoose.model('User', userSchema);
     member.member.stdnum = old_member[i].stdnum;
     member.member.ID = old_member[i].ID;
 
-
+console.log(member.member.ID);
           member.save(function (err) {
               if (err) {
                 console.log(err);
@@ -114,6 +114,11 @@ var User = mongoose.model('User', userSchema);
               }});
      }
           console.log('Loaded old members!');
+          
+              	User.count({}, function(err, c) {
+           console.log('Count is ' + c);
+      });
+              
 
       }else{
         console.log('Old members are already in DB!');

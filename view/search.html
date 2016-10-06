@@ -26,6 +26,9 @@
        width: 50%;
     margin: 0 auto; 
    }
+   #right_column{
+    text-align:center;
+   }
 @media (max-width: 600px) {
 
   .ui.input{
@@ -63,61 +66,62 @@
 
 
   <div id="body" class="ui two column stackable grid">
-<div class="ui center aligned column">
-<div>
-<a class="ui blue button" href="/show/1415">Show 14-15 Members</a></div><br/>
-<div><a class="ui blue button" href="/show/1516">Show 15-16 Members</a></div></br>
-<div><a class="ui blue button" href="/show/1617">Show 16-17 Members</a></div><br/>
-</div>
-<div class="ui center aligned column">
-<form class="ui center aligned form" action='/searchname' method='POST'>
-    <label>Search by name</label><div class="ui action input">
-        
-        <input type="text" name="name" required/>
+      <div class="ui center aligned column">
       
-
-      <input class="ui green button" type="submit" value='Search'></input></div>
-</form>
-
-<form class="ui center aligned form" action='/searchyear' method='POST'>
-    <label>Show member from follow year</label><div class="ui action input">
-        
-                 <select class="ui selection dropdown" name="year">
-                  <option value="1">Year 1</option>
-              <option value="2">Year 2</option>
-              <option value="3">Year 3</option>
-              <option value="4">Year 4</option>
-              <option value="grad">Graduate</option>
-             
-
-                </select>
-      
-
-      <input class="ui green button" type="submit" value='Search'></input></div>
-</form>
-
-<form class="ui form" action='/searchprogram' method='POST'>
-     <label>Show member from follow program</label><div class="ui action input">
-       
-                              <select class="ui selection dropdown" name="program">
-                  <option value="Rotman">Rotman</option>
-              <option value="Architecture">Architecture</option>
-              <option value="Math">Math/Physical science</option>
-              <option value="CS">Computer Science</option>
-              <option value="Lifesci">Life Science</option>
-              <option value="Engineering">Engineering</option>
-              <option value="Arts">Arts</option>
-              <option value="Other">Others</option>
-
-                </select>
-      
-
-      <input class="ui green button" type="submit" value='Search'></input></div>
-</form>
-</div>
+      <div><a class="ui blue button" href="/show/1415">Show 14-15 Members</a></div><br/>
+      <div><a class="ui blue button" href="/show/1516">Show 15-16 Members</a></div></br>
+      <div><a class="ui blue button" href="/show/1617">Show 16-17 Members</a></div><br/>
+      </div>
 
 
-    </div>
+      <div class="ui center aligned column" id="right_column">
+          <form class="ui center aligned form" action='/searchname' method='POST'>
+              <label>Search by name</label>
+              <div class="ui action input">
+                  
+                  <input type="text" name="name" required></input>                
+
+                  <input class="ui green button" type="submit" value='Search'></input>
+                </div>
+          </form>
+
+    <form class="ui center aligned form" action='/searchyear' method='POST'>
+        <label>Show member from follow year</label><div class="ui action input">
+            
+                     <select class="ui selection dropdown" name="year">
+                      <option value="1">Year 1</option>
+                  <option value="2">Year 2</option>
+                  <option value="3">Year 3</option>
+                  <option value="4">Year 4</option>
+                  <option value="grad">Graduate</option>
+                 
+
+                    </select>
+          
+
+          <input class="ui green button" type="submit" value='Search'></input></div>
+    </form>
+
+    <form class="ui form" action='/searchprogram' method='POST'>
+         <label>Show member from follow program</label><div class="ui action input">
+           
+                                  <select class="ui selection dropdown" name="program">
+                      <option value="Rotman">Rotman</option>
+                  <option value="Architecture">Architecture</option>
+                  <option value="Math and Physical Science">Math and Physical Science</option>
+                  <option value="Computer Science">Computer Science</option>
+                  <option value="Life Science">Life Science</option>
+                  <option value="Engineering">Engineering</option>
+                  <option value="Arts">Arts</option>
+                  <option value="Other">Others</option>
+
+                    </select>
+          
+
+          <input class="ui green button" type="submit" value='Search'></input></div>
+    </form>
+  </div>
+  </div>
   </div>
 </body>
 </html>
