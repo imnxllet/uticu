@@ -41,7 +41,7 @@ router.post('/signup', isLoggedIn, function(req, res){
 	    	console.log( "Number of users:", count);
 
 	    	var newUser = new User();
-			newUser.member.ID = count - 1;
+			newUser.member.ID = count;
 			newUser.member.name = req.body.name;
 			newUser.member.email = req.body.email;
 			newUser.member.number = req.body.number;
