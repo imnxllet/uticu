@@ -1,85 +1,3 @@
-<!-- 
-<!DOCTYPE html>
-<html>
-<head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-
-  <title>Members List</title>
-  <script src="js/jquery.js"></script>
-<link rel="stylesheet" href="/stylesheets/semantic.min.css"/>
-<script src="js/semantic.min.js"></script>
-
-<style type="text/css">
-    #card{
-      margin-top: 100px;
-
-    }
-
-    body{
-      margin:10px 40px 0 40px;
-    }
-    .ui.label{
-      margin: 10px 20px 10px 20px;
-      font-size: 12pt;
-    }
-
-    </style>
- <script type="text/javascript">
-  $(document).ready(function() {
-      $('#list').html();
-     });
-    </script>
-</head>
-<body>
-<div class="ui center aligned container">
-<a href='/' class="ui small image"><img src="/logo.png" ></a></div>
-<div class="ui inverted red stackable container menu">
-  <a class="item" href="/home">Home</a>
-  <a class="item" href="/new">New Member</a>
-  <a class="item" href="/search">Update/Search Member</a>
-  <a class="active item" href="/allmembers">View All member</a>
-  <div class="right item">
-    | Welcome! <%= user.exec.username %> |    
-    <a class="ui inverted button" href="/logout">Log out</a>
-    
-  </div>
-</div>
- 
-
-
-<div class="ui red huge center aligned header"> <%= year %> Membership List</div>
-
-
-  <div id="body" class="ui center aligned segment">
-
-<% if(members.length == 0) {%>
-<div class="ui blue center aligned segment">
-No members yet!
-</div>
- <% } %>
-    
-
-  <div id='list' class="ui ordered horizontal list">
-
-
-<% for(var i=0; i<members.length; i++) {%>
-
-<div class="item">
-<a class="ui red basic label" href="/members/<%= members[i].member.ID %>">
-<i class="user icon"></i>
-    <%= members[i].member.name %>
-  </a>  </div>
-
-<% } %>
-
-    </div>
-  </div>
-</body>
-</html>
--->
  
 <!DOCTYPE html>
 <html>
@@ -112,12 +30,8 @@ No members yet!
       width:70%;
       margin: 0 auto;
     }
-    .name{
-      font-size: 12.8pt;
-      font-weight: bold;
-    }
-    .edit{
-      color: black;
+    .entry{
+      line-height: 14px; 
     }
 
     </style>
@@ -177,12 +91,9 @@ No members yet!
 
     <tr class="entry">
     <td><%= i+1 %></td>
-      <td class="single line">
-      <a href="/members/<%= members[i].member.ID %>" class="name">
+      <td>
+      <a href="/members/<%= members[i].member.ID %>">
         <%= members[i].member.name %></a>
-        
-  <a href="/members/<%= members[i].member.ID %>"><div class="ui tiny yellow label">Edit</div></a>
-
       </td>
       <td class="center aligned">
         <%= members[i].member.email %>
