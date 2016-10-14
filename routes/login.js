@@ -159,7 +159,7 @@ router.get('/show/:year', isLoggedIn, function(req, res){
 
 router.post('/searchname', isLoggedIn, function(req, res){
 	var name = capitalizeFirstLetter(req.body.name);
-		User.find({'member.name': { "$regex": name}},function(err, members) {
+		User.find({'member.name': { "$regex": name,$options:'i'}},function(err, members) {
 	      if (err) {
 	        res.status(500).send(err);
 	        console.log(err);
