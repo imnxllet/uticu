@@ -239,7 +239,7 @@ router.post('/update', isLoggedIn, function(req, res){
 	      res.status(404).send('Not found.');
 	      return;
 	    }
-
+	    member.member.name = req.body.membername;
 		member.member.email = req.body.email;
 		member.member.number = req.body.number;
 		member.member.card14_15 = req.body.card14_15;
