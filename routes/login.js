@@ -268,6 +268,35 @@ router.get('/logo.png', function(req, res){
 router.get('/bg.JPG', function(req, res){
 	res.render("bg.JPG");
 });
+
+router.get('/allemails', isLoggedIn, function(req, res){
+	//Find all books.
+	User.find({'member.email': {$exists: true}},function(err, members) {
+      if (err) {
+        res.status(500).send(err);
+        console.log(err);
+        return;
+      }
+      //console.log(trucks);
+      //console.log(req.params.id);
+      res.render('allemailsphones.html', { user: req.user, members: turnTruckstoHtmlList(members), year: "Emails"});
+   });
+
+});
+router.get('/allphones', isLoggedIn, function(req, res){
+	//Find all books.
+	User.find({'member.number': {$exists: true}},function(err, members) {
+      if (err) {
+        res.status(500).send(err);
+        console.log(err);
+        return;
+      }
+      //console.log(trucks);
+      //console.log(req.params.id);
+      res.render('allemailsphones.html', { user: req.user, members: turnTruckstoHtmlList(members), year: "Phones"});
+   });
+		
+});
 /*Get all the sellers*/
 router.get('/allmembers', isLoggedIn, function(req, res){
 	//Find all books.

@@ -60,7 +60,7 @@ var User = mongoose.model('User', userSchema);
 
   /*made admin account*/
   
-  User.findOne({"exec.username": "uticu2014@gmail.com"},function(err, user) {
+  User.findOne({"exec.username": "uticu"},function(err, user) {
       if (err) {
         res.status(500).send(err);
         console.log(err);
